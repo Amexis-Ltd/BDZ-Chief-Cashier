@@ -1,14 +1,14 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 
-const ChiefCashier: React.FC = () => {
+const ChiefCashierCorrectiveVoucher: React.FC = () => {
   return (
     <Box sx={{ p: 3 }}>
       <Typography variant="h4" component="h1" gutterBottom>
-        Управление на депозити и консумативи
+        Коригиращи ордери
       </Typography>
     </Box>
   );
 };
 
-export default ChiefCashier; 
+export default ChiefCashierCorrectiveVoucher; 

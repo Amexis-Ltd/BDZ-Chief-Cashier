@@ -51,6 +51,10 @@ import ContractPage from './pages/TariffPages/ContractPage';
 import SpecialServicesPage from './pages/TariffPages/SpecialServicesPage';
 import TariffVersionsPage from './pages/TariffPages/TariffVersionsPage';
 import ChiefCashier from './pages/ChiefCashierPages/ChiefCashier';
+import ChiefCashierBook from './pages/ChiefCashierPages/ChiefCashierBook';
+import ChiefCashierShiftReport from './pages/ChiefCashierPages/ChiefCashierShiftReport';
+import ChiefCashierLedgerAccount from './pages/ChiefCashierPages/ChiefCashierLedgerAccount';
+import ChiefCashierCorrectiveVoucher from './pages/ChiefCashierPages/ChiefCashierCorrectiveVoucher';
 
 const AppRoutes: React.FC = () => {
   return (
@@ -76,6 +80,56 @@ const AppRoutes: React.FC = () => {
           {/* Chief Cashier route */}
           <Route
             path="/chief-cashier"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <ChiefCashier />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/chief-cashier/cash-book"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <ChiefCashierBook />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/chief-cashier/shift-reports"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <ChiefCashierShiftReport />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/chief-cashier/ledger-account"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <ChiefCashierLedgerAccount />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/chief-cashier/corrective-voucher"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <ChiefCashierCorrectiveVoucher />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/chief-cashier/deposits-consumables"
             element={
               <ProtectedRoute>
                 <Layout>

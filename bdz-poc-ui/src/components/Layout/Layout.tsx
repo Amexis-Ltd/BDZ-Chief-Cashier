@@ -74,6 +74,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [openDocuments, setOpenDocuments] = useState(false);
   const [openTariffSubmenu, setOpenTariffSubmenu] = useState(false);
   const [openMainSubmenu, setOpenMainSubmenu] = useState(false);
+  const [openChiefCashierSubmenu, setOpenChiefCashierSubmenu] = useState(false);
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -88,6 +89,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     if (openNomenclatures) setOpenNomenclatures(false);
     if (openDocuments) setOpenDocuments(false);
     if (openTariffSubmenu) setOpenTariffSubmenu(false);
+    if (openChiefCashierSubmenu) setOpenChiefCashierSubmenu(false);
   };
 
   const handleNomenclaturesClick = () => {
@@ -95,6 +97,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     if (openMainSubmenu) setOpenMainSubmenu(false);
     if (openDocuments) setOpenDocuments(false);
     if (openTariffSubmenu) setOpenTariffSubmenu(false);
+    if (openChiefCashierSubmenu) setOpenChiefCashierSubmenu(false);
   };
 
   const handleDocumentsClick = () => {
@@ -102,6 +105,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     if (openMainSubmenu) setOpenMainSubmenu(false);
     if (openNomenclatures) setOpenNomenclatures(false);
     if (openTariffSubmenu) setOpenTariffSubmenu(false);
+    if (openChiefCashierSubmenu) setOpenChiefCashierSubmenu(false);
   };
   
   const handleTariffSubmenuClick = () => {
@@ -109,6 +113,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     if (openMainSubmenu) setOpenMainSubmenu(false);
     if (openNomenclatures) setOpenNomenclatures(false);
     if (openDocuments) setOpenDocuments(false);
+    if (openChiefCashierSubmenu) setOpenChiefCashierSubmenu(false);
+  };
+
+  const handleChiefCashierSubmenuClick = () => {
+    setOpenChiefCashierSubmenu(!openChiefCashierSubmenu);
+    if (openMainSubmenu) setOpenMainSubmenu(false);
+    if (openNomenclatures) setOpenNomenclatures(false);
+    if (openDocuments) setOpenDocuments(false);
+    if (openTariffSubmenu) setOpenTariffSubmenu(false);
   };
 
   const handleLogout = () => {
@@ -143,8 +156,34 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     {
       label: 'Главен касиер',
       icon: <CashIcon sx={{ mr: 1 }} />,
-      path: '/chief-cashier',
-      show: 'always'
+      show: 'always',
+      subItems: [
+        {
+          label: 'Касова книга',
+          icon: <CashIcon />,
+          path: '/chief-cashier/cash-book'
+        },
+        {
+          label: 'Сменни отчети',
+          icon: <AssessmentIcon />,
+          path: '/chief-cashier/shift-reports'
+        },
+        {
+          label: 'Главна сметка КП 612',
+          icon: <DescriptionIcon />,
+          path: '/chief-cashier/ledger-account'
+        },
+        {
+          label: 'Коригиращи ордери',
+          icon: <DescriptionIcon />,
+          path: '/chief-cashier/corrective-voucher'
+        },
+        {
+          label: 'Управление на депозити и консумативи',
+          icon: <DescriptionIcon />,
+          path: '/chief-cashier/deposits-consumables'
+        }
+      ]
     },
     {
       label: 'Номенклатури',
@@ -291,12 +330,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 else if (item.label === 'Номенклатури') handleNomenclaturesClick();
                 else if (item.label === 'Документи') handleDocumentsClick();
                 else if (item.label === 'Тарифиране') handleTariffSubmenuClick();
+                else if (item.label === 'Главен касиер') handleChiefCashierSubmenuClick();
               }}
               startIcon={item.icon}
               endIcon={item.label === 'Основни' ? (openMainSubmenu ? <ExpandLess /> : <ExpandMore />) :
                       item.label === 'Номенклатури' ? (openNomenclatures ? <ExpandLess /> : <ExpandMore />) :
                       item.label === 'Документи' ? (openDocuments ? <ExpandLess /> : <ExpandMore />) :
                       item.label === 'Тарифиране' ? (openTariffSubmenu ? <ExpandLess /> : <ExpandMore />) :
+                      item.label === 'Главен касиер' ? (openChiefCashierSubmenu ? <ExpandLess /> : <ExpandMore />) :
                       null}
             >
               {item.label}
@@ -304,7 +345,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             {(item.label === 'Основни' && openMainSubmenu) ||
              (item.label === 'Номенклатури' && openNomenclatures) ||
              (item.label === 'Документи' && openDocuments) ||
-             (item.label === 'Тарифиране' && openTariffSubmenu) ? (
+             (item.label === 'Тарифиране' && openTariffSubmenu) ||
+             (item.label === 'Главен касиер' && openChiefCashierSubmenu) ? (
               <>
                 <Box
                   onClick={() => {
@@ -312,6 +354,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     else if (item.label === 'Номенклатури') handleNomenclaturesClick();
                     else if (item.label === 'Документи') handleDocumentsClick();
                     else if (item.label === 'Тарифиране') handleTariffSubmenuClick();
+                    else if (item.label === 'Главен касиер') handleChiefCashierSubmenuClick();
                   }}
                   sx={{
                     position: 'fixed',
@@ -344,6 +387,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                           else if (item.label === 'Номенклатури') handleNomenclaturesClick();
                           else if (item.label === 'Документи') handleDocumentsClick();
                           else if (item.label === 'Тарифиране') handleTariffSubmenuClick();
+                          else if (item.label === 'Главен касиер') handleChiefCashierSubmenuClick();
                         }}
                         sx={{ py: 1 }}
                       >
