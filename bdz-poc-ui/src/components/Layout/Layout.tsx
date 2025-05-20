@@ -27,6 +27,12 @@ import {
   FormatListBulleted as FormatListBulletedIcon,
   ExpandLess,
   ExpandMore,
+  AccountBalance,
+  MenuBook,
+  AccessTime,
+  AccountBalanceWallet,
+  EditNote,
+  Inventory,
 } from '@mui/icons-material';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import {
@@ -155,32 +161,32 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     },
     {
       label: 'Главен касиер',
-      icon: <CashIcon sx={{ mr: 1 }} />,
+      icon: <AccountBalance sx={{ mr: 1 }} />,
       show: 'always',
       subItems: [
         {
           label: 'Касова книга',
-          icon: <CashIcon />,
+          icon: <MenuBook />,
           path: '/chief-cashier/cash-book'
         },
         {
           label: 'Сменни отчети',
-          icon: <AssessmentIcon />,
+          icon: <AccessTime />,
           path: '/chief-cashier/shift-reports'
         },
         {
           label: 'Главна сметка КП 612',
-          icon: <DescriptionIcon />,
+          icon: <AccountBalanceWallet  />,
           path: '/chief-cashier/ledger-account'
         },
         {
           label: 'Коригиращи ордери',
-          icon: <DescriptionIcon />,
+          icon: <EditNote />,
           path: '/chief-cashier/corrective-voucher'
         },
         {
           label: 'Управление на депозити и консумативи',
-          icon: <DescriptionIcon />,
+          icon: <Inventory />,
           path: '/chief-cashier/deposits-consumables'
         }
       ]
