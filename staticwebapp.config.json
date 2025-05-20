@@ -1,0 +1,19 @@
+{
+  "platform": {
+    "apiRuntime": "node:22"
+  },
+  "build": {
+    "nodeVersion": "22"
+  },
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/images/*.{png,jpg,gif}", "/css/*"]
+  },
+  "routes": [
+    {
+      "route": "/*",
+      "serve": "/index.html",
+      "statusCode": 200
+    }
+  ]
+} 
