@@ -141,6 +141,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       ]
     },
     {
+      label: 'Главен касиер',
+      icon: <CashIcon sx={{ mr: 1 }} />,
+      path: '/chief-cashier',
+      show: 'always'
+    },
+    {
       label: 'Номенклатури',
       icon: <FormatListBulletedIcon sx={{ mr: 1 }} />,
       show: 'always',
